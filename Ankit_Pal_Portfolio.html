@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Pal | Future Cloud Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                            glow: '#00f0ff',
+                        },
+                        darkbg: '#080c14',
+                        darkcard: 'rgba(15, 23, 42, 0.75)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow-pulse': 'glowPulse 2s infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glowPulse: {
+                            '0%': { boxShadow: '0 0 15px rgba(14, 165, 233, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(0, 240, 255, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080c14;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel-hover:hover {
+            background: rgba(30, 41, 59, 0.85);
+            border-color: rgba(56, 189, 248, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.35);
+        }
+
+        /* Neon Glow Text */
+        .glow-text {
+            text-shadow: 0 0 25px rgba(14, 165, 233, 0.65);
+        }
+
+        /* Custom Animated Gradient Border */
+        .gradient-border-card {
+            position: relative;
+            background: rgba(15, 23, 42, 0.85);
+            border-radius: 1.5rem;
+        }
+        .gradient-border-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 1.5rem;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(56,189,248,0.6), rgba(99,102,241,0.2), rgba(20,184,166,0.6));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+
+        /* Grid Background Pattern */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+            <div class="glass-panel rounded-2xl px-5 py-3.5 flex items-center justify-between border border-white/10 shadow-xl">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center font-bold text-slate-900 shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                        AP
+                    </div>
+                    <span class="font-bold text-lg tracking-tight text-white group-hover:text-brand-400 transition-colors">
+                        Ankit<span class="text-brand-400">.Pal</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#who-i-am" class="text-sm font-medium text-slate-300 hover:text-brand-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-user text-xs text-brand-500"></i> Who I Am
+                    </a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-brand-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-code text-xs text-brand-500"></i> My Skills
+                    </a>
+                    <a href="#goals" class="text-sm font-medium text-slate-300 hover:text-brand-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-cloud text-xs text-brand-500"></i> Future Goals
+                    </a>
+                    <a href="#visuals" class="text-sm font-medium text-slate-300 hover:text-brand-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-xs text-brand-500"></i> Showcase
+                    </a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#contact" class="px-4 py-2 rounded-xl text-xs font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/30 hover:bg-brand-500 hover:text-slate-950 transition-all duration-300 shadow-lg shadow-brand-500/10">
+                        Connect With Me
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto px-4 mt-2">
+            <div class="glass-panel rounded-2xl p-6 space-y-4 border border-white/10 shadow-2xl">
+                <a href="#who-i-am" class="mobile-nav-link block text-slate-300 hover:text-brand-400 text-base font-medium py-2 border-b border-slate-800">
+                    <i class="fa-solid fa-user text-brand-400 mr-3"></i> Who I Am
+                </a>
+                <a href="#skills" class="mobile-nav-link block text-slate-300 hover:text-brand-400 text-base font-medium py-2 border-b border-slate-800">
+                    <i class="fa-solid fa-code text-brand-400 mr-3"></i> My Skills
+                </a>
+                <a href="#goals" class="mobile-nav-link block text-slate-300 hover:text-brand-400 text-base font-medium py-2 border-b border-slate-800">
+                    <i class="fa-solid fa-cloud text-brand-400 mr-3"></i> Future Goals
+                </a>
+                <a href="#visuals" class="mobile-nav-link block text-slate-300 hover:text-brand-400 text-base font-medium py-2 border-b border-slate-800">
+                    <i class="fa-solid fa-layer-group text-brand-400 mr-3"></i> Profile Visualizer
+                </a>
+                <a href="#contact" class="mobile-nav-link block text-center py-3 rounded-xl bg-brand-500 text-slate-950 font-bold text-sm shadow-lg shadow-brand-500/20">
+                    Connect With Me
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative pt-28">
+
+        <section id="hero" class="relative min-h-[88vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+            <!-- Glowing Background Orbs -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-500/15 rounded-full blur-[140px] pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-brand-500/30 text-brand-400 text-xs sm:text-sm font-mono mb-8 animate-float">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>CSE Student & Aspiring Cloud Engineer</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight sm:leading-none mb-6">
+                    Hello, I'm <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-cyan-300 to-teal-200 glow-text">Ankit Pal</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-2xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                    An <span class="text-white font-semibold underline decoration-brand-400/50">optimistic, disciplined & creative</span> engineering student building scalable algorithms and mapping a future in <span class="text-brand-400 font-semibold">Cloud Architecture</span>.
+                </p>
+
+                <!-- Action CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#who-i-am" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-slate-950 bg-gradient-to-r from-brand-400 to-cyan-400 hover:from-cyan-300 hover:to-brand-300 transition-all duration-300 shadow-xl shadow-brand-500/25 flex items-center justify-center gap-3 group">
+                        Explore My Journey
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#goals" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-slate-200 glass-panel border border-white/10 hover:border-brand-400/40 hover:bg-slate-800/80 transition-all duration-300 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-cloud text-brand-400"></i>
+                        Cloud Roadmap
+                    </a>
+                </div>
+
+                <!-- Quick Highlights Counter Cards -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/5 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-brand-400 font-mono mb-1">20</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Years Old</div>
+                    </div>
+                    <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/5 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-cyan-400 font-mono mb-1">B.E. CSE</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Undergrad</div>
+                    </div>
+                    <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/5 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-teal-400 font-mono mb-1">Advanced</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Python Track</div>
+                    </div>
+                    <div class="glass-panel p-4 sm:p-5 rounded-2xl border border-white/5 text-center">
+                        <div class="text-2xl sm:text-3xl font-bold text-indigo-400 font-mono mb-1">DBRAU</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Agra, UP</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="who-i-am" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="h-px w-12 bg-brand-400"></span>
+                <span class="text-brand-400 font-mono text-sm tracking-widest uppercase font-semibold">01. Identity</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 flex items-center gap-3">
+                Who I Am <i class="fa-solid fa-id-card text-brand-400/50 text-2xl"></i>
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Academic Identity Card -->
+                <div class="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 text-2xl shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Academic Journey</h3>
+                                <p class="text-slate-400 text-sm">Computer Science & Engineering</p>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-300 text-base leading-relaxed mb-6">
+                            I am a 20-year-old student currently pursuing my <strong class="text-white">Bachelor of Engineering in Computer Science and Engineering</strong> at <strong class="text-brand-400">Dr. Bhimrao Ambedkar University (DBRAU)</strong>, Khandari Campus, Agra, Uttar Pradesh.
+                        </p>
+
+                        <div class="space-y-3 font-mono text-sm">
+                            <div class="flex items-center gap-3 text-slate-300 p-3 rounded-xl bg-slate-900/50 border border-white/5">
+                                <i class="fa-solid fa-university text-brand-400"></i>
+                                <span><strong>University:</strong> Dr. Bhimrao Ambedkar University</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300 p-3 rounded-xl bg-slate-900/50 border border-white/5">
+                                <i class="fa-solid fa-location-dot text-brand-400"></i>
+                                <span><strong>Location:</strong> Khandari Agra, Uttar Pradesh, India</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300 p-3 rounded-xl bg-slate-900/50 border border-white/5">
+                                <i class="fa-solid fa-laptop-code text-brand-400"></i>
+                                <span><strong>Degree:</strong> Bachelor of Engineering (B.E. CSE)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <span>STATUS: ACTIVE UNDERGRAD</span>
+                        <span class="text-emerald-400"><i class="fa-solid fa-circle text-[8px] mr-1"></i> ENROLLED</span>
+                    </div>
+                </div>
+
+                <!-- Personal Qualities & Hobbies -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <!-- Core Qualities -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 glass-panel-hover flex-1">
+                        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-gem text-brand-400"></i> My Qualities
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-white/5 text-center">
+                                <i class="fa-solid fa-sun text-amber-400 text-lg mb-1 block"></i>
+                                <span class="text-xs font-semibold text-slate-200">Optimistic</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-white/5 text-center">
+                                <i class="fa-solid fa-lightbulb text-cyan-400 text-lg mb-1 block"></i>
+                                <span class="text-xs font-semibold text-slate-200">Creative</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-white/5 text-center">
+                                <i class="fa-solid fa-bullseye text-red-400 text-lg mb-1 block"></i>
+                                <span class="text-xs font-semibold text-slate-200">Disciplined</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-slate-900/60 border border-white/5 text-center">
+                                <i class="fa-solid fa-shield-halved text-emerald-400 text-lg mb-1 block"></i>
+                                <span class="text-xs font-semibold text-slate-200">Responsible</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hobbies Card -->
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 glass-panel-hover flex-1">
+                        <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-pink-500"></i> My Hobbies
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-4 p-3 rounded-2xl bg-slate-900/50 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-music"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Listening to Music</h4>
+                                    <p class="text-xs text-slate-400">Helps maintain deep focus and creative thinking.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-3 rounded-2xl bg-slate-900/50 border border-white/5">
+                                <div class="w-10 h-10 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-compass"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Exploring New Things</h4>
+                                    <p class="text-xs text-slate-400">Constantly learning modern tech trends & concepts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="h-px w-12 bg-brand-400"></span>
+                <span class="text-brand-400 font-mono text-sm tracking-widest uppercase font-semibold">02. Competencies</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 flex items-center gap-3">
+                My Technical & Soft Skills <i class="fa-solid fa-microchip text-brand-400/50 text-2xl"></i>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Skill Card 1: Python -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-2xl">
+                                <i class="fa-brands fa-python"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">LEARNING TRACK</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Python Programming</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Completed basic Python fundamentals and currently advancing through object-oriented programming, data structures integration, and asynchronous scripts.
+                        </p>
+
+                        <!-- Progress Bar -->
+                        <div class="space-y-2 mb-6">
+                            <div class="flex justify-between text-xs font-mono">
+                                <span class="text-slate-400">Python Basics</span>
+                                <span class="text-brand-400">80% Mastered</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-brand-400 rounded-full w-[80%]"></div>
+                            </div>
+
+                            <div class="flex justify-between text-xs font-mono pt-2">
+                                <span class="text-slate-400">Advanced Python Concepts</span>
+                                <span class="text-cyan-400">15% In-Progress</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-cyan-400 rounded-full w-[15%]"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Syntax & Logic</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Data Types</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">OOP Basics</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2: DSA & Problem Solving -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl">
+                                <i class="fa-solid fa-diagram-project"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">NEXT MILESTONE</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">DSA & Problem Solving</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Preparing to transition Python mastery into solving algorithmic problems using Data Structures (Arrays, Trees, Graphs) and time/space complexity optimization.
+                        </p>
+
+                        <!-- Focus List -->
+                        <div class="space-y-3 mb-6 text-sm">
+                            <div class="flex items-center gap-2 text-slate-300">
+                                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
+                                <span>Algorithmic Thinking</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300">
+                                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
+                                <span>Data Structures Architecture</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300">
+                                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
+                                <span>Time & Space Complexity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Algorithms</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Data Structures</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">LeetCode Prep</span>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3: Communication & Soft Skills -->
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">CONTINUOUS</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Communication Skills</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                            Actively refining interpersonal, written, and technical communication to express complex engineering ideas clearly and collaborate effectively in global teams.
+                        </p>
+
+                        <!-- Progress Indicator -->
+                        <div class="space-y-2 mb-6">
+                            <div class="flex justify-between text-xs font-mono">
+                                <span class="text-slate-400">Technical & Verbal Clarity</span>
+                                <span class="text-indigo-400">Actively Improving</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-indigo-500 to-brand-400 rounded-full w-4/5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Public Speaking</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Technical Writing</span>
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 text-xs text-slate-300">Teamwork</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="goals" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="h-px w-12 bg-brand-400"></span>
+                <span class="text-brand-400 font-mono text-sm tracking-widest uppercase font-semibold">03. Ambitions</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 flex items-center gap-3">
+                My Future Goals <i class="fa-solid fa-cloud-bolt text-brand-400/50 text-2xl"></i>
+            </h2>
+            <p class="text-slate-400 text-base max-w-2xl mb-12">
+                My clear, long-term roadmap combining hands-on Cloud Architecture mastery with advanced higher education.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                <!-- Goal Box 1: Cloud Computing Engineer -->
+                <div class="glass-panel p-8 rounded-3xl border border-brand-500/30 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-brand-500/10 rounded-full blur-3xl group-hover:bg-brand-500/20 transition-all"></div>
+                    
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center text-slate-950 text-2xl font-bold shadow-lg shadow-brand-500/20">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono text-brand-400 tracking-wider uppercase font-bold">Primary Target</span>
+                            <h3 class="text-2xl font-bold text-white">Cloud Computing Engineer</h3>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Specialize in designing, deploying, and managing scalable, fault-tolerant cloud infrastructure on platforms like <strong class="text-white">AWS & Azure</strong>, integrating cloud-native Python microservices.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center gap-2 text-slate-300">
+                            <i class="fa-brands fa-aws text-amber-400 text-base"></i> AWS Solutions
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center gap-2 text-slate-300">
+                            <i class="fa-solid fa-network-wired text-cyan-400 text-base"></i> Distributed Systems
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goal Box 2: Higher Education -->
+                <div class="glass-panel p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all"></div>
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 to-teal-300 flex items-center justify-center text-slate-950 text-2xl font-bold shadow-lg shadow-cyan-500/20">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-bold">Academic Target</span>
+                            <h3 class="text-2xl font-bold text-white">Higher Education (MS / M.Tech)</h3>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Pursue advanced postgraduate studies in Computer Science & Cloud Systems to gain deeper research insights, specialized system engineering skills, and global industry perspective.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center gap-2 text-slate-300">
+                            <i class="fa-solid fa-book-bookmark text-emerald-400 text-base"></i> Deep Specialization
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center gap-2 text-slate-300">
+                            <i class="fa-solid fa-globe text-indigo-400 text-base"></i> Global Expertise
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Timeline Roadmap -->
+            <div class="glass-panel p-8 rounded-3xl border border-white/10">
+                <h3 class="text-xl font-bold text-white mb-8 text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-route text-brand-400"></i> Career & Academic Roadmap
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                    <!-- Step 1 -->
+                    <div class="p-5 rounded-2xl bg-slate-900/60 border border-white/5 relative">
+                        <div class="text-xs font-mono text-brand-400 font-bold mb-1">PHASE 01 (CURRENT)</div>
+                        <h4 class="text-base font-bold text-white mb-2">Python & Core CS</h4>
+                        <p class="text-xs text-slate-400">Mastering Advanced Python, OS, Networks, and DBMS at DBRAU.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-5 rounded-2xl bg-slate-900/60 border border-white/5 relative">
+                        <div class="text-xs font-mono text-cyan-400 font-bold mb-1">PHASE 02</div>
+                        <h4 class="text-base font-bold text-white mb-2">DSA & Problem Solving</h4>
+                        <p class="text-xs text-slate-400">Building algorithmic efficiency and tackling coding challenges.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-5 rounded-2xl bg-slate-900/60 border border-white/5 relative">
+                        <div class="text-xs font-mono text-teal-400 font-bold mb-1">PHASE 03</div>
+                        <h4 class="text-base font-bold text-white mb-2">Cloud Fundamentals</h4>
+                        <p class="text-xs text-slate-400">AWS / Azure certifications, Docker, Kubernetes & microservices.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="p-5 rounded-2xl bg-slate-900/60 border border-white/5 relative">
+                        <div class="text-xs font-mono text-indigo-400 font-bold mb-1">PHASE 04</div>
+                        <h4 class="text-base font-bold text-white mb-2">Higher Education & Role</h4>
+                        <p class="text-xs text-slate-400">Pursuing MS/M.Tech & stepping into Cloud Architecture roles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visuals" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="h-px w-12 bg-brand-400"></span>
+                        <span class="text-brand-400 font-mono text-sm tracking-widest uppercase font-semibold">04. Visual & Interactive Profile</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center gap-3">
+                        3-Panel Profile Showcase <i class="fa-solid fa-wand-magic-sparkles text-brand-400 text-2xl animate-pulse"></i>
+                    </h2>
+                </div>
+
+                <!-- Showcase View Switcher Tabs -->
+                <div class="flex items-center p-1.5 glass-panel rounded-2xl border border-white/10 text-xs font-mono">
+                    <button id="view-mode-card" onclick="switchShowcaseMode('card')" class="px-4 py-2 rounded-xl text-white bg-brand-500 font-bold shadow-lg transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-grip text-xs"></i> Interactive Panels
+                    </button>
+                    <button id="view-mode-image" onclick="switchShowcaseMode('image')" class="px-4 py-2 rounded-xl text-slate-400 hover:text-white transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-image text-xs"></i> Full Visual Artwork
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mode 1: Interactive 3-Panel Grid Showcase -->
+            <div id="showcase-card-view" class="grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-500">
+                
+                <!-- Panel 1: Who I Am -->
+                <div class="gradient-border-card p-6 sm:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-all duration-300 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-brand-500/10 text-brand-400 border border-brand-500/30 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span> PANEL 01
+                            </span>
+                            <i class="fa-solid fa-user-gear text-2xl text-slate-600 group-hover:text-brand-400 transition-colors"></i>
+                        </div>
+
+                        <!-- Panel Image Avatar / Banner -->
+                        <div class="relative h-48 rounded-2xl overflow-hidden mb-6 border border-white/10 bg-slate-900 group-hover:border-brand-500/50 transition-colors">
+                            <svg class="w-full h-full object-cover" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#0284c7;stop-opacity:0.8" />
+                                        <stop offset="100%" style="stop-color:#0f172a;stop-opacity:0.9" />
+                                    </linearGradient>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grad1)" />
+                                <circle cx="200" cy="80" r="45" fill="#38bdf8" opacity="0.2" />
+                                <circle cx="200" cy="70" r="30" fill="#0ea5e9" />
+                                <path d="M 140 160 Q 200 110 260 160 Z" fill="#0ea5e9" />
+                                <text x="200" y="185" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="12">ANKIT PAL • CSE UNDERGRAD</text>
+                            </svg>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex items-end p-3">
+                                <span class="text-xs font-mono font-bold text-white bg-slate-900/80 px-2.5 py-1 rounded-lg border border-white/10">
+                                    <i class="fa-solid fa-graduation-cap text-brand-400 mr-1"></i> DBRAU Campus Life
+                                </span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-1">WHO I AM</h3>
+                        <p class="text-brand-400 text-xs font-mono mb-4">ENGINEERING STUDENT & EXPLORER</p>
+
+                        <div class="space-y-3 text-sm text-slate-300 mb-6">
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-white/5">
+                                <div class="text-[11px] text-slate-400 font-mono uppercase">Identity</div>
+                                <div class="font-bold text-white">Ankit Pal, 20 Years Old</div>
+                                <div class="text-xs text-slate-400">Pursuing B.E. in CSE at DBRAU Khandari Agra, UP</div>
+                            </div>
+
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-white/5">
+                                <div class="text-[11px] text-slate-400 font-mono uppercase">Qualities & Hobbies</div>
+                                <p class="text-xs text-slate-300 mt-1">Optimistic, disciplined, creative & responsible. Passionate about listening to music and exploring new technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>DBRAU CSE '26</span>
+                        <span class="text-brand-400 font-bold">SECTION 01</span>
+                    </div>
+                </div>
+
+                <!-- Panel 2: My Skills -->
+                <div class="gradient-border-card p-6 sm:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-all duration-300 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span> PANEL 02
+                            </span>
+                            <i class="fa-solid fa-terminal text-2xl text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+
+                        <!-- Panel Image Avatar / Banner -->
+                        <div class="relative h-48 rounded-2xl overflow-hidden mb-6 border border-white/10 bg-slate-900 group-hover:border-cyan-500/50 transition-colors">
+                            <svg class="w-full h-full object-cover" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#0891b2;stop-opacity:0.8" />
+                                        <stop offset="100%" style="stop-color:#0f172a;stop-opacity:0.9" />
+                                    </linearGradient>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grad2)" />
+                                <path d="M 100 120 L 150 70 L 200 100 L 280 40 L 320 80" stroke="#38bdf8" stroke-width="4" fill="none" />
+                                <circle cx="280" cy="40" r="6" fill="#00f0ff" />
+                                <text x="200" y="160" text-anchor="middle" fill="#e2e8f0" font-family="monospace" font-size="14" font-weight="bold">PYTHON • DSA • SPEECH</text>
+                            </svg>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex items-end p-3">
+                                <span class="text-xs font-mono font-bold text-white bg-slate-900/80 px-2.5 py-1 rounded-lg border border-white/10">
+                                    <i class="fa-brands fa-python text-yellow-400 mr-1"></i> Python & Logic Building
+                                </span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-1">MY SKILLS</h3>
+                        <p class="text-cyan-400 text-xs font-mono mb-4">PYTHON, DSA & COMMUNICATION</p>
+
+                        <div class="space-y-3 text-sm text-slate-300 mb-6">
+                            <!-- Python Skill Progress Bar -->
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-white/5 space-y-1">
+                                <div class="flex justify-between items-center text-xs font-mono">
+                                    <span class="font-bold text-white"><i class="fa-brands fa-python text-yellow-400 mr-1"></i> Python Basics</span>
+                                    <span class="text-brand-400 font-bold">80%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-brand-400 h-full w-[80%]"></div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-white/5 space-y-1">
+                                <div class="flex justify-between items-center text-xs font-mono">
+                                    <span class="font-bold text-white"><i class="fa-solid fa-code text-cyan-400 mr-1"></i> Advanced Python</span>
+                                    <span class="text-cyan-400 font-bold">15%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-cyan-400 h-full w-[15%]"></div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-white/5 text-xs">
+                                <span class="font-bold text-indigo-300 block mb-0.5"><i class="fa-solid fa-sitemap mr-1"></i> DSA & Communication</span>
+                                <span class="text-slate-400">Targeting problem solving algorithms & technical speaking skills.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>SKILL STACK</span>
+                        <span class="text-cyan-400 font-bold">ACTIVE LEARNING</span>
+                    </div>
+                </div>
+
+                <!-- Panel 3: My Future Goals -->
+                <div class="gradient-border-card p-6 sm:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-all duration-300 overflow-hidden relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></span> PANEL 03
+                            </span>
+                            <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-600 group-hover:text-indigo-400 transition-colors"></i>
+                        </div>
+
+                        <!-- Panel Image Avatar / Banner -->
+                        <div class="relative h-48 rounded-2xl overflow-hidden mb-6 border border-white/10 bg-slate-900 group-hover:border-indigo-500/50 transition-colors">
+                            <svg class="w-full h-full object-cover" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:0.8" />
+                                        <stop offset="100%" style="stop-color:#0f172a;stop-opacity:0.9" />
+                                    </linearGradient>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grad3)" />
+                                <path d="M 160 110 Q 180 80 210 90 Q 240 70 270 90 Q 290 100 280 120 Z" fill="#818cf8" opacity="0.8" />
+                                <path d="M 120 130 Q 140 100 170 110 Q 200 90 230 110 Q 250 120 240 140 Z" fill="#6366f1" />
+                                <text x="200" y="175" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="12">CLOUD ARCHITECT • MS / M.TECH</text>
+                            </svg>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex items-end p-3">
+                                <span class="text-xs font-mono font-bold text-white bg-slate-900/80 px-2.5 py-1 rounded-lg border border-white/10">
+                                    <i class="fa-solid fa-cloud text-brand-400 mr-1"></i> Cloud Engineer Vision
+                                </span>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-1">MY FUTURE GOALS</h3>
+                        <p class="text-indigo-400 text-xs font-mono mb-4">CLOUD ARCHITECTURE & HIGHER ED</p>
+
+                        <div class="space-y-3 text-sm text-slate-300 mb-6">
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-brand-500/30">
+                                <div class="text-[11px] text-brand-400 font-mono font-bold flex items-center gap-1.5">
+                                    <i class="fa-solid fa-bullseye"></i> CAREER OBJECTIVE
+                                </div>
+                                <div class="font-bold text-white text-sm">Cloud Computing Engineer</div>
+                                <p class="text-xs text-slate-400 mt-0.5">Specialized engineering domain in cloud infrastructure & distributed systems.</p>
+                            </div>
+
+                            <div class="p-3 rounded-2xl bg-slate-900/80 border border-cyan-500/30">
+                                <div class="text-[11px] text-cyan-400 font-mono font-bold flex items-center gap-1.5">
+                                    <i class="fa-solid fa-graduation-cap"></i> ACADEMIC ROADMAP
+                                </div>
+                                <div class="font-bold text-white text-sm">Higher Education (MS / M.Tech)</div>
+                                <p class="text-xs text-slate-400 mt-0.5">Advanced post-graduation studies for system architecture excellence.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                        <span>CAREER GOAL</span>
+                        <span class="text-indigo-400 font-bold">TECH LEADER</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mode 2: Integrated High-Res Artwork Showcase -->
+            <div id="showcase-image-view" class="hidden transition-all duration-500">
+                <div class="glass-panel p-4 sm:p-6 rounded-3xl border border-white/10 group relative overflow-hidden">
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900">
+                        <svg class="w-full h-auto max-h-[600px]" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="1200" height="600" fill="#080c14" />
+                            <rect x="20" y="20" width="1160" height="560" rx="20" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+                            
+                            <!-- Panel 1 Visual -->
+                            <rect x="50" y="60" width="340" height="480" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+                            <text x="220" y="110" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-weight="bold" font-size="22">PANEL 1: WHO I AM</text>
+                            <circle cx="220" cy="200" r="50" fill="#0ea5e9" />
+                            <text x="220" y="280" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="18">ANKIT PAL (20 Y/O)</text>
+                            <text x="220" y="310" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">B.E. CSE @ DBRAU Agra</text>
+                            <text x="220" y="360" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="13">Optimistic • Creative</text>
+                            <text x="220" y="385" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="13">Disciplined • Responsible</text>
+
+                            <!-- Panel 2 Visual -->
+                            <rect x="430" y="60" width="340" height="480" rx="16" fill="#1e293b" stroke="#22d3ee" stroke-width="2" />
+                            <text x="600" y="110" text-anchor="middle" fill="#22d3ee" font-family="sans-serif" font-weight="bold" font-size="22">PANEL 2: MY SKILLS</text>
+                            <rect x="470" y="180" width="260" height="15" rx="7" fill="#334155" />
+                            <rect x="470" y="180" width="208" height="15" rx="7" fill="#38bdf8" />
+                            <text x="600" y="170" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14">Python Basics (80%)</text>
+                            
+                            <rect x="470" y="250" width="260" height="15" rx="7" fill="#334155" />
+                            <rect x="470" y="250" width="39" height="15" rx="7" fill="#22d3ee" />
+                            <text x="600" y="240" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14">Advanced Python (15%)</text>
+                            <text x="600" y="330" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="15">DSA & Problem Solving</text>
+                            <text x="600" y="370" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="15">Communication Skills</text>
+
+                            <!-- Panel 3 Visual -->
+                            <rect x="810" y="60" width="340" height="480" rx="16" fill="#1e293b" stroke="#818cf8" stroke-width="2" />
+                            <text x="980" y="110" text-anchor="middle" fill="#818cf8" font-family="sans-serif" font-weight="bold" font-size="22">PANEL 3: FUTURE GOALS</text>
+                            <text x="980" y="200" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="18">Cloud Engineer</text>
+                            <text x="980" y="230" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">AWS / Azure Architecture</text>
+                            <text x="980" y="310" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="18">Higher Education</text>
+                            <text x="980" y="340" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">MS / M.Tech in CS</text>
+                        </svg>
+
+                        <!-- Overlay Trigger Lightbox Button -->
+                        <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                            <button onclick="openImageLightbox()" class="px-6 py-3 rounded-xl bg-brand-500 text-slate-950 font-bold text-sm shadow-xl flex items-center gap-2 hover:bg-brand-400 transition-all">
+                                <i class="fa-solid fa-expand"></i> Expand Full Screen View
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 flex items-center justify-between text-xs text-slate-400 font-mono px-2">
+                        <span>ARTWORK: 3-PANEL HIGH-RESOLUTION SHOWCASE</span>
+                        <button onclick="openImageLightbox()" class="text-brand-400 hover:underline"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> CLICK TO ZOOM</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center relative">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-brand-500/30 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <span class="px-4 py-1.5 rounded-full text-xs font-mono bg-brand-500/10 text-brand-400 border border-brand-500/30 inline-block mb-6">
+                    GET IN TOUCH
+                </span>
+
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">
+                    Let's Connect & Build Together
+                </h2>
+
+                <p class="text-slate-300 max-w-xl mx-auto text-base mb-8">
+                    Whether you want to discuss Cloud Engineering, Python projects, professional networking, or potential academic collaborations, feel free to reach out!
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <!-- Email Copy Button -->
+                    <button onclick="copyToClipboard('ankitpal59911@gmail.com')" class="px-6 py-3.5 rounded-xl bg-slate-900 border border-white/10 hover:border-brand-400/50 text-slate-200 text-sm font-semibold flex items-center gap-3 transition-all">
+                        <i class="fa-solid fa-envelope text-brand-400"></i>
+                        <span id="email-text">ankitpal59911@gmail.com</span>
+                        <i class="fa-solid fa-copy text-xs text-slate-400 ml-2"></i>
+                    </button>
+                    <!-- Direct Email Button -->
+                    <a href="mailto:ankitpal59911@gmail.com" class="px-6 py-3.5 rounded-xl bg-brand-500 text-slate-950 text-sm font-bold flex items-center gap-2 hover:bg-brand-400 transition-colors shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-paper-plane text-lg"></i>
+                        Send Email
+                    </a>
+                    <!-- Added LinkedIn Profile Button -->
+                    <a href="https://www.linkedin.com/in/ankit-pal-cloud" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl bg-slate-900 border border-sky-500/30 text-sky-400 hover:bg-sky-500 hover:text-slate-950 text-sm font-semibold flex items-center gap-2 transition-all shadow-lg shadow-sky-500/10">
+                        <i class="fa-brands fa-linkedin text-lg"></i>
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800/80 py-8 px-4 text-center text-xs text-slate-500 font-mono">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Ankit Pal. All Rights Reserved.
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <span>B.E. CSE Student</span>
+                <span>•</span>
+                <span>DBRAU Agra</span>
+                <span>•</span>
+                <span>Future Cloud Engineer</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="image-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-8 bg-slate-950/90 backdrop-blur-md transition-opacity">
+        <div class="relative max-w-6xl w-full bg-slate-900 border border-white/10 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden">
+            <!-- Close Button -->
+            <button id="close-modal-btn" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center hover:bg-brand-500 hover:text-slate-950 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="mb-4">
+                <h3 class="text-xl font-bold text-white">Ankit Pal - Complete Profile Visualizer</h3>
+                <p class="text-xs text-slate-400">Who I Am | My Skills | My Future Goals</p>
+            </div>
+
+            <div class="overflow-auto max-h-[80vh] rounded-2xl border border-white/5 bg-slate-950">
+                <svg class="w-full h-auto min-w-[800px]" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="1200" height="600" fill="#080c14" />
+                    <rect x="20" y="20" width="1160" height="560" rx="20" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+                    
+                    <!-- Panel 1 -->
+                    <rect x="50" y="60" width="340" height="480" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+                    <text x="220" y="110" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-weight="bold" font-size="22">PANEL 1: WHO I AM</text>
+                    <circle cx="220" cy="200" r="50" fill="#0ea5e9" />
+                    <text x="220" y="280" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="18">ANKIT PAL (20 Y/O)</text>
+                    <text x="220" y="310" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">B.E. CSE @ DBRAU Agra</text>
+                    <text x="220" y="360" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="13">Optimistic • Creative</text>
+                    <text x="220" y="385" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="13">Disciplined • Responsible</text>
+
+                    <!-- Panel 2 -->
+                    <rect x="430" y="60" width="340" height="480" rx="16" fill="#1e293b" stroke="#22d3ee" stroke-width="2" />
+                    <text x="600" y="110" text-anchor="middle" fill="#22d3ee" font-family="sans-serif" font-weight="bold" font-size="22">PANEL 2: MY SKILLS</text>
+                    <rect x="470" y="180" width="260" height="15" rx="7" fill="#334155" />
+                    <rect x="470" y="180" width="208" height="15" rx="7" fill="#38bdf8" />
+                    <text x="600" y="170" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14">Python Basics (80%)</text>
+                    
+                    <rect x="470" y="250" width="260" height="15" rx="7" fill="#334155" />
+                    <rect x="470" y="250" width="39" height="15" rx="7" fill="#22d3ee" />
+                    <text x="600" y="240" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="14">Advanced Python (15%)</text>
+                    <text x="600" y="330" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="15">DSA & Problem Solving</text>
+                    <text x="600" y="370" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="15">Communication Skills</text>
+
+                    <!-- Panel 3 -->
+                    <rect x="810" y="60" width="340" height="480" rx="16" fill="#1e293b" stroke="#818cf8" stroke-width="2" />
+                    <text x="980" y="110" text-anchor="middle" fill="#818cf8" font-family="sans-serif" font-weight="bold" font-size="22">PANEL 3: FUTURE GOALS</text>
+                    <text x="980" y="200" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="18">Cloud Engineer</text>
+                    <text x="980" y="230" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">AWS / Azure Architecture</text>
+                    <text x="980" y="310" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="18">Higher Education</text>
+                    <text x="980" y="340" text-anchor="middle" fill="#94a3b8" font-family="sans-serif" font-size="14">MS / M.Tech in CS</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Showcase View Mode Switcher
+        function switchShowcaseMode(mode) {
+            const cardView = document.getElementById('showcase-card-view');
+            const imageView = document.getElementById('showcase-image-view');
+            const btnCard = document.getElementById('view-mode-card');
+            const btnImage = document.getElementById('view-mode-image');
+
+            if (mode === 'card') {
+                cardView.classList.remove('hidden');
+                imageView.classList.add('hidden');
+
+                btnCard.className = "px-4 py-2 rounded-xl text-white bg-brand-500 font-bold shadow-lg transition-all flex items-center gap-2";
+                btnImage.className = "px-4 py-2 rounded-xl text-slate-400 hover:text-white transition-all flex items-center gap-2";
+            } else {
+                cardView.classList.add('hidden');
+                imageView.classList.remove('hidden');
+
+                btnImage.className = "px-4 py-2 rounded-xl text-white bg-brand-500 font-bold shadow-lg transition-all flex items-center gap-2";
+                btnCard.className = "px-4 py-2 rounded-xl text-slate-400 hover:text-white transition-all flex items-center gap-2";
+            }
+        }
+
+        // Image Lightbox Modal Controls
+        function openImageLightbox() {
+            const imageModal = document.getElementById('image-modal');
+            if (imageModal) {
+                imageModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const imageModal = document.getElementById('image-modal');
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                imageModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        if (imageModal) {
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    imageModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Clipboard Copy Helper
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const emailText = document.getElementById('email-text');
+            if (emailText) {
+                const originalText = emailText.innerText;
+                emailText.innerText = 'Copied to Clipboard!';
+                setTimeout(() => {
+                    emailText.innerText = originalText;
+                }, 2000);
+            }
+        }
+
+        // Header Style Shift on Scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (navbar && window.scrollY > 50) {
+                navbar.classList.add('py-1');
+            } else if (navbar) {
+                navbar.classList.remove('py-1');
+            }
+        });
+    </script>
+</body>
+</html>
